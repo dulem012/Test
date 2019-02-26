@@ -3,6 +3,8 @@ import {getOffices} from '../services/index'
 import {dispatchOffices} from '../actions/index'
 import {connect} from 'react-redux'
 import ListCard from './cards/listCard'
+import Header from '../partials/header'
+import Loader from './loader/loader'
 
 class ListViewPage extends Component {
     componentDidMount() {
@@ -14,12 +16,14 @@ class ListViewPage extends Component {
     }
     render() {
         return(
-            <div className='list-page-container'>
-                <ListCard />
-                <ListCard />
-                <ListCard />
-                <ListCard />
-            </div>
+            <React.Fragment>
+            <Header pathname={this.props.location.pathname}/>
+            {this.props.listOfOffices.length === 0 ? <Loader /> : <div className='list-page-container'>
+                {this.props.listOfOffices.map((el,i) => {
+                    return <ListCard name={el.name} description={el.description} photo={el.photo}  key={el.id}/>
+                })}
+            </div>}
+            </React.Fragment>
         )
     }
 }

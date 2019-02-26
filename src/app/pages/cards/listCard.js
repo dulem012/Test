@@ -4,12 +4,11 @@ const ListCard = (props) => {
     return(
         <div className='list-card'>
             <div className='list-image-wrapper'>
-                {/* <p>P</p> */}
-                <img src='http://www.geonames.org/flags/x/rs.gif' alt='image' />
+             {props.photo !== null ?  <img src={props.photo} alt='image' /> : <p>{props.name.slice(0,1)}</p>}
             </div> 
             <div className='list-address-wrapper'>
-                <p>Belgrade office</p>
-                <p>Itekako Belgrade office address is Terazije 23</p>    
+                <p>{props.name}</p>
+                <p>{props.description.length > 70 ? props.description.slice(0, 40) + '...' : props.description}</p>    
             </div> 
         </div>
     )

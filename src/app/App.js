@@ -8,14 +8,11 @@ import { Switch, Route, Redirect} from 'react-router-dom'
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-       <Header />
         <Switch>
           <Route path='/list' component={ListViewPage} />
           <Route path='/grid' component={GridViewPage} />
           <Route path='*' render={() => (<Redirect to={'/list'} />)} />
         </Switch>
-       </React.Fragment>
     );
   }
 }

@@ -16,12 +16,20 @@ header h3 {
 
 header p {
   float: left;
-  width: 45%;
+  width: 48%;
   height: 98%;
   padding-top: 10px;
   margin-left: 2%;
   text-align: center;
+}
+
+.clicked {
   border-bottom: 2px solid yellow;
+  color: white;
+}
+
+.not-clicked {
+  color: rgb(80, 194, 175);
 }
 
 .list-page-container {
@@ -88,28 +96,13 @@ header p {
 }
 
 .grid-card {
-  float: left;
-  width: calc(94% * 0.25);
+  width: 90%;
   height: 250px;
   padding: 10px;
-  margin-bottom: 60px;
+  margin: 30px auto;
   background-color: white;
 }
 
-.grid-card:nth-child(4n + 1) {
-  margin-left: 0;
-}
-
-.grid-card:nth-child(4n + 2) {
-  margin-left: 2%;
-}
-
-.grid-card:nth-child(4n + 3) {
-  margin-left: 2%;
-}
-.grid-card:nth-child(4n + 4) {
-  margin-left: 2%;
-}
 .grid-image-wrapper {
   width: 70px;
   margin: auto;
@@ -148,4 +141,83 @@ header p {
 
 .grid-address-wrapper p:nth-child(2) {
   font-size: 14px;
+}
+
+
+/* LOADER   */
+.lds-dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .grid-card {
+    width: calc(90% * 0.5);
+    float: left;
+  }
+  .grid-card:nth-child(2n + 1) {
+    margin-left: 0;
+  }
+  .grid-card:nth-child(2n + 2) {
+    margin-left: 10%;
+  }
+} 
+
+@media screen and (min-width: 768px) {
+  .grid-card {
+    width: calc(90% * 0.33);
+    float: left;
+  }
+  .grid-card:nth-child(3n + 1) {
+    margin-left: 0;
+  }
+  
+  .grid-card:nth-child(3n + 2) {
+    margin-left: 5%;
+  }
+  
+  .grid-card:nth-child(3n + 3) {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid-card {
+    width: calc(94% * 0.25);
+    float: left;
+  }
+  .grid-card:nth-child(4n + 1) {
+    margin-left: 0;
+  }
+  
+  .grid-card:nth-child(4n + 2) {
+    margin-left: 2%;
+  }
+  
+  .grid-card:nth-child(4n + 3) {
+    margin-left: 2%;
+  }
+  .grid-card:nth-child(4n + 4) {
+    margin-left: 2%;
+  }
 }
