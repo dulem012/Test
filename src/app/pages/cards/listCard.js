@@ -4,7 +4,7 @@ const ListCard = (props) => {
     return(
         <div className='list-card'>
             <div className='list-image-wrapper'>
-             {props.photo !== null ?  <img src={props.photo} alt='image' /> : <p>{props.name.slice(0,1)}</p>}
+             {props.photo !== null ?  <img src={props.photo} alt='Not Found' /> : <p>{props.name.slice(0,1)}</p>}
             </div> 
             <div className='list-address-wrapper'>
                 <p>{props.name}</p>

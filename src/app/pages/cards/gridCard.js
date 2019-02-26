@@ -4,7 +4,7 @@ const GridCard = (props) => {
     return(
         <div className='grid-card'>
             <div className='grid-image-wrapper'>
-               {props.photo !== null ?  <img src={props.photo} alt='image' /> : <p>{props.name.slice(0, 1)}</p>}   
+               {props.photo !== null ?  <img src={props.photo} alt='Not Found' /> : <p>{props.name.slice(0, 1)}</p>}   
             </div>
             <div className='grid-address-wrapper'>
                 <p>{props.name}</p>
