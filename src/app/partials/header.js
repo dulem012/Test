@@ -5,12 +5,12 @@ const Header = () => {
     return(
         <header className='container-fluid'>
             <div className='row'>
-                <h5 className='col-xs-6 '>Offices</h5>
-                <div>
-                    <Link to={'/list'}>
+                <h3 className='col-6 col-lg-4'>Offices</h3>
+                <div className='col-6 col-lg-4'>
+                    <Link to={'/list'} style={{color: 'white'}}>
                         <p>List</p>
                     </Link>
-                    <Link to={'/grid'}>
+                    <Link to={'/grid'} style={{color: 'white'}}>
                         <p>Grid</p>
                     </Link>
                 </div>

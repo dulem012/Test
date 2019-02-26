@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './partials/header'
 import ListViewPage from './pages/listViewPage'
-import { GridViewPage } from './pages/gridViewPage'
+import GridViewPage from './pages/gridViewPage'
 import { Switch, Route, Redirect} from 'react-router-dom'
 
 class App extends Component {

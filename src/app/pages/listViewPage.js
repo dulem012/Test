@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {getOffices} from '../services/index'
 import {dispatchOffices} from '../actions/index'
 import {connect} from 'react-redux'
+import ListCard from './cards/listCard'
 
 class ListViewPage extends Component {
     componentDidMount() {
@@ -13,8 +14,11 @@ class ListViewPage extends Component {
     }
     render() {
         return(
-            <div>
-                aaa
+            <div className='list-page-container'>
+                <ListCard />
+                <ListCard />
+                <ListCard />
+                <ListCard />
             </div>
         )
     }
