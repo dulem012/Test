@@ -10,7 +10,7 @@ class MapViewPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-    listOfficesToMap : this.props.listOfOffices.length > 0  ? this.props.listOfOffices.map((el) => ({isOpen: true})) : []
+    listOfficesToMap : this.props.listOfOffices.length > 0  ? this.props.listOfOffices.map((el) => ({isOpen: false})) : []
     }
   }
 
@@ -39,13 +39,7 @@ class MapViewPage extends Component {
 
   closeHandler = (i) => {
     this.setState({
-      listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
-          if(i === j) {
-            return {isOpen: false}
-          }else {
-            return {isOpen: true}
-          }
-      })
+      listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>({isOpen: false}))
     })
   }
 

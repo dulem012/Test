@@ -18,9 +18,9 @@ const Map = (props) => {
             draggable={false}
             onClick={() => {props.openHandler(i)}}
           >
-            {props.listOfficesToMap.length > 0 ? props.listOfficesToMap[i].isOpen === true ? <InfoWindow onCloseClick={() => {props.closeHandler(i)}}>
+            { props.listOfficesToMap[i].isOpen ? <InfoWindow onCloseClick={() => {props.closeHandler(i)}}>
 			        {place.photo !== null ? <img src={place.photo} className='grid-image-wrapper' alt='Not Found' /> : <p>Don't have image</p>}
-		        </InfoWindow> : null : null}
+		        </InfoWindow> : null }
           </Marker>
         );
       })}
