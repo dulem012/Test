@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import ListCard from './cards/listCard'
 import Header from '../partials/header'
 import Loader from './loader/loader'
+import Map from './mapViewPage'
 
 class ListViewPage extends Component {
     componentDidMount() {
@@ -23,6 +24,15 @@ class ListViewPage extends Component {
                     return <ListCard name={el.name} description={el.description} photo={el.photo}  key={el.id}/>
                 })}
             </div>}
+            <Map 
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key="
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            center={{ lat: -24.9923319, lng: 135.2252427 }}
+            zoom={2}
+            places={this.props.listOfOffices}
+            />
             </React.Fragment>
         )
     }

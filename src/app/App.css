@@ -143,12 +143,19 @@ header p {
   font-size: 14px;
 }
 
+.map-wrapper {
+  height: 400px;
+}
 
 /* LOADER   */
 .lds-dual-ring {
   display: inline-block;
-  width: 64px;
-  height: 64px;
+  width: 94px;
+  height: 94px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .lds-dual-ring:after {
   content: " ";
@@ -157,8 +164,8 @@ header p {
   height: 46px;
   margin: 1px;
   border-radius: 50%;
-  border: 5px solid #fff;
-  border-color: #fff transparent #fff transparent;
+  border: 5px solid black;
+  border-color:black transparent black black;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
