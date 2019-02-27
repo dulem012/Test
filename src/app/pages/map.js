@@ -1,4 +1,4 @@
- import React, {Component} from "react";
+ import React from "react";
 import {
   withGoogleMap,
   GoogleMap,
@@ -6,7 +6,6 @@ import {
   withScriptjs,
   InfoWindow
 } from "react-google-maps";
-import {connect} from 'react-redux'
 
 const Map = (props) => {
     return (

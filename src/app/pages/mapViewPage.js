@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import Map from './map'
 import Header from '../partials/header'
 import {connect} from 'react-redux'
-import {dispatchOffices} from '../actions/index'
-import {getOffices} from '../services/index'
+import { dispatchOffices } from '../actions/index'
+import { getOffices } from '../services/index'
 import Loader from './loader/loader'
 
 class MapViewPage extends Component {
@@ -15,16 +15,19 @@ class MapViewPage extends Component {
   }
 
   componentDidMount() {
-    if (this.props.listOfOffices.length === 0) {
-      getOffices().then((response)=>{
-        this.props.dispatchOffices(response)
-      })
+    if(this.props.listOfOffices.length === 0) {
+        getOffices().then((response) => {
+            this.props.dispatchOffices(response)
+            this.setState({
+              listOfficesToMap: response.map((el) => ({isOpen: true}))
+            })
+        })
     }
-  }
+}
 
-  openHandler(i){
+  openHandler = (i) => {
     this.setState({
-      listOfficesToMap: this.props.listOfficesToMap.map((el, j)=>{
+      listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
         if(i === j || el.isOpen) {
           return {isOpen: true}
         }else {
@@ -34,9 +37,9 @@ class MapViewPage extends Component {
     })
   }
 
-  closeHandler(i) {
+  closeHandler = (i) => {
     this.setState({
-      listOfficesToMap: this.props.listOfficesToMap.map((el, j)=>{
+      listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
           if(i === j || !el.isOpen) {
             return {isOpen: false}
           }else {
@@ -56,7 +59,7 @@ class MapViewPage extends Component {
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `600px` }} />}
             mapElement={<div style={{ height: `100%` }} />}
-            center={{ lat: -24.9923319, lng: 135.2252427 }}
+            center={{ lat: 0, lng: 0 }}
             zoom={2}
             places={this.props.listOfOffices}
             listOfficesToMap={this.state.listOfficesToMap}
@@ -71,7 +74,7 @@ class MapViewPage extends Component {
 
 const mapStateToProps = (state) => ({ ...state })
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOffices: (offices) => {dispatch(dispatchOffices(offices))}
+    dispatchOffices: (listOffices) => { dispatch(dispatchOffices(listOffices))}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapViewPage)
