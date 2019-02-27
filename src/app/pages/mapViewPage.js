@@ -19,7 +19,7 @@ class MapViewPage extends Component {
         getOffices().then((response) => {
             this.props.dispatchOffices(response)
             this.setState({
-              listOfficesToMap: response.map((el) => ({isOpen: true}))
+              listOfficesToMap: response.map((el) => ({isOpen: false}))
             })
         })
     }
@@ -28,7 +28,7 @@ class MapViewPage extends Component {
   openHandler = (i) => {
     this.setState({
       listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
-        if(i === j || el.isOpen) {
+        if(i === j) {
           return {isOpen: true}
         }else {
           return {isOpen: false}
@@ -40,7 +40,7 @@ class MapViewPage extends Component {
   closeHandler = (i) => {
     this.setState({
       listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
-          if(i === j || !el.isOpen) {
+          if(i === j) {
             return {isOpen: false}
           }else {
             return {isOpen: true}
