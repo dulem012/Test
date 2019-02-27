@@ -1,24 +1,30 @@
-import React, {Component} from "react";
-import {
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  withScriptjs,
-  InfoWindow
-} from "react-google-maps";
+import React, {Component} from 'react'
+import Map from './map'
+import Header from '../partials/header'
 import {connect} from 'react-redux'
+import {dispatchOffices} from '../actions/index'
+import {getOffices} from '../services/index'
+import Loader from './loader/loader'
 
-class Map extends Component {
-  constructor(props){
+class MapViewPage extends Component {
+  constructor(props) {
     super(props)
     this.state = {
-      listOfficesToMap : this.props.listOfOffices.length > 0  ? this.props.listOfOffices.map((el) => ({isOpen: true})) : []
+    listOfficesToMap : this.props.listOfOffices.length > 0  ? this.props.listOfOffices.map((el) => ({isOpen: true})) : []
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.listOfOffices.length === 0) {
+      getOffices().then((response)=>{
+        this.props.dispatchOffices(response)
+      })
     }
   }
 
   openHandler(i){
     this.setState({
-      listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
+      listOfficesToMap: this.props.listOfficesToMap.map((el, j)=>{
         if(i === j || el.isOpen) {
           return {isOpen: true}
         }else {
@@ -30,7 +36,7 @@ class Map extends Component {
 
   closeHandler(i) {
     this.setState({
-      listOfficesToMap: this.state.listOfficesToMap.map((el, j)=>{
+      listOfficesToMap: this.props.listOfficesToMap.map((el, j)=>{
           if(i === j || !el.isOpen) {
             return {isOpen: false}
           }else {
@@ -39,30 +45,33 @@ class Map extends Component {
       })
     })
   }
-  
+
   render() {
-    return (
-    <GoogleMap defaultZoom={this.props.zoom} defaultCenter={this.props.center}  options={{ scrollwheel: true}}> 
-      {this.props.places.map((place, i) => {
-        return (
-          <Marker
-            key={place.id}
-            position={{ lat: parseFloat(place.latitude), lng: parseFloat(place.longitude) }}
-            draggable={false}
-            onClick={() => {this.openHandler(i)}}
-          >
-            {this.state.listOfficesToMap.length > 0 ? this.state.listOfficesToMap[i].isOpen === true ? <InfoWindow onCloseClick={() => {this.closeHandler(i)}}>
-			        {place.photo !== null ? <img src={place.photo} className='grid-image-wrapper' alt='Not Found' /> : <p>Don't have image</p>}
-		        </InfoWindow> : null : null}
-          </Marker>
-        );
-      })}
-    </GoogleMap>
-  );
-    }
-};
+    return(
+      <React.Fragment>
+      <Header pathname={this.props.location.pathname}/>
+      {this.props.listOfOffices.length === 0 ? <Loader /> : <div className='list-page-container'>
+          <Map 
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key="
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `600px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            center={{ lat: -24.9923319, lng: 135.2252427 }}
+            zoom={2}
+            places={this.props.listOfOffices}
+            listOfficesToMap={this.state.listOfficesToMap}
+            openHandler = {this.openHandler}
+            closeHandler = {this.closeHandler}
+       />    
+       </div>}
+       </React.Fragment>
+      )
+  }
+}
 
-const mapStateToProps = (state) => ({...state})
+const mapStateToProps = (state) => ({ ...state })
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOffices: (offices) => {dispatch(dispatchOffices(offices))}
+})
 
-
-export default connect(mapStateToProps)(withScriptjs(withGoogleMap(Map)));
+export default connect(mapStateToProps, mapDispatchToProps)(MapViewPage)
