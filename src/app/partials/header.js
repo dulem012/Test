@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// className={props.pathname === '/list' ? 'clicked': 'not-clicked'}
+// You don't need to set active manually it can be done using react router. Active link already has active class you just need to style it.
 const Header = (props) => {
     return(
         <header className='container-fluid'>

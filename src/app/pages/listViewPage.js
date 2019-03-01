@@ -6,6 +6,7 @@ import ListCard from './cards/listCard'
 import Header from '../partials/header'
 import Loader from './loader/loader'
 
+// Same as it posted in gridViewPAge.js
 class ListViewPage extends Component {
     componentDidMount() {
         if(this.props.listOfOffices.length === 0){
