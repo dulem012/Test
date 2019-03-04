@@ -11,20 +11,18 @@ require('dotenv').config();
 
 class App extends Component {
   render() {
-    const {listOfOffices} = this.props
     return (
         <HashRouter>
-          <Fragment>
-            <Header />
-          {listOfOffices.length === 0 ? <Loader /> :
-              <Switch>
-                <Route path='/list' component={ListViewPage} />
-                <Route path='/grid' component={GridViewPage} />
-                <Route path='/map'  component={MapViewPage} />
-                <Route path='*' render={() => (<Redirect to={'/list'} />)} />
-              </Switch>
-          }
-            </Fragment>
+            <Fragment>
+                <Header />
+                <Loader /> 
+                <Switch>
+                  <Route path='/list' component={ListViewPage} />
+                  <Route path='/grid' component={GridViewPage} />
+                  <Route path='/map'  component={MapViewPage} />
+                  <Route path='*' render={() => (<Redirect to={'/list'} />)} />
+                </Switch>
+              </Fragment>
           </HashRouter>
     );
   }
