@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import CardContainer from './card/cardsContainer';
 
 class GridViewPage extends Component {
-
     render() {
         const { listOfOffices } = this.props
         return(

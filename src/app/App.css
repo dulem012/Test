@@ -155,10 +155,10 @@ header a:hover {
 
 .grid-address-wrapper p:nth-child(2) {
   font-size: 14px;
-  height: calc(100% - 37px); 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
 
 .map-wrapper {
