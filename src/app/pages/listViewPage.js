@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import CardContainer from './card/cardsContainer';
 
 class ListViewPage extends Component {
-    
     render() {
         const { listOfOffices } = this.props
         return(
@@ -12,6 +11,6 @@ class ListViewPage extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({ ...state })
+const mapStateToProps = (state) => ({ ...state });
 
-export default connect(mapStateToProps)(ListViewPage)
+export default connect(mapStateToProps)(ListViewPage);

@@ -4,7 +4,7 @@ import ListViewPage from './pages/listViewPage';
 import GridViewPage from './pages/gridViewPage';
 import MapViewPage from './pages/mapViewPage';
 import Header from './partials/header';
-import Loader from './pages/loader/loader'
+import Loader from './pages/loader/loader';
 import { Switch, Route, Redirect, HashRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 require('dotenv').config();
@@ -28,6 +28,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ ...state })
+const mapStateToProps = (state) => ({ ...state });
 
 export default connect(mapStateToProps)(App);

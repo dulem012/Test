@@ -3,7 +3,6 @@ import {getOffices} from '../../services/index';
 import {dispatchOffices} from '../../actions/index';
 import { connect } from 'react-redux';
 
-
 class Loader extends React.Component {
     componentDidMount(){
         getOffices().then((response)=>{
