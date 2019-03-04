@@ -154,17 +154,11 @@ header a:hover {
 }
 
 .grid-address-wrapper p:nth-child(2) {
-  display: block;
-  display: -webkit-box;
-  max-width: 100%;
-  height: 43px;
-  margin: 0 auto;
   font-size: 14px;
-  line-height: 1;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
 
 .map-wrapper {
