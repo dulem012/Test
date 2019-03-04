@@ -1,37 +1,17 @@
-import React, { Component } from 'react'
-import GridCard from './cards/gridCard'
-import { dispatchOffices } from '../actions/index'
-import { getOffices } from '../services/index'
-import { connect } from 'react-redux'
-import Header from '../partials/header'
-import Loader from './loader/loader'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import CardContainer from './card/cardsContainer';
 
 class GridViewPage extends Component {
-    componentDidMount() {
-        if(this.props.listOfOffices.length === 0) {
-            getOffices().then((response) => {
-                this.props.dispatchOffices(response)
-            })
-        }
-    }
 
     render() {
+        const { listOfOffices } = this.props
         return(
-            <React.Fragment>
-                <Header pathname={this.props.location.pathname}/>
-            {this.props.listOfOffices.length === 0 ? <Loader /> : <div className='grid-page-container'>
-                {this.props.listOfOffices.map((el,i) => {
-                    return <GridCard name={el.name} description={el.description}  photo={el.photo} key={el.id} />
-                })}
-            </div>}
-            </React.Fragment>
+            <CardContainer listOfOffices={listOfOffices} view={'grid'} />
         )
     }
 }
 
-const mapStateToProps = (state) => ({ ...state })
-const mapDispatchToProps = (dispatch) => ({
-    dispatchOffices: (listOffices) => { dispatch(dispatchOffices(listOffices))}
-})
+const mapStateToProps = (state) => ({ ...state });
 
-export default connect(mapStateToProps,mapDispatchToProps)(GridViewPage)
+export default connect(mapStateToProps)(GridViewPage);

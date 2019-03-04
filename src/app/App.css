@@ -14,17 +14,27 @@ header h3 {
   padding: 6px 0;
 }
 
-header p {
+header a {
   float: left;
   width: 31%;
   height: 98%;
   padding-top: 10px;
   margin-left: 1%;
   text-align: center;
+  color: rgb(128, 236, 236);
+}
+
+header a:hover {
+  text-decoration: none;
+  color: rgb(54, 228, 199);
 }
 
 .clicked {
   border-bottom: 2px solid yellow;
+  color: white;
+}
+
+.clicked:hover {
   color: white;
 }
 
@@ -85,6 +95,9 @@ header p {
 
 .list-address-wrapper > p:nth-child(2) {
   color: rgb(144, 219, 181);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .grid-page-container {
@@ -128,6 +141,7 @@ header p {
 
 .grid-address-wrapper {
   margin-top: 20px;
+  height: calc(100% - 110px); /*20 70 20 10*/
 }
 
 .grid-address-wrapper > p {
@@ -141,6 +155,10 @@ header p {
 
 .grid-address-wrapper p:nth-child(2) {
   font-size: 14px;
+  height: calc(100% - 37px); 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .map-wrapper {
