@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {getOffices} from '../../services/index';
 import {dispatchOffices} from '../../actions/index';
 import { connect } from 'react-redux';
-
 
 class Loader extends React.Component {
     componentDidMount(){
@@ -11,14 +10,18 @@ class Loader extends React.Component {
         })
     }
         render(){
+            const { listOfOffices } = this.props
             return (
-                <div className="loader"></div>
+                <Fragment>
+                    { listOfOffices.length === 0 ? <div className="loader"></div> : null }
+                </Fragment>
             )
         }
  }
 
+const mapStateToProps = (state) => ({ ...state })
 const mapDispatchToProps = (dispatch) => ({
     dispatchOffices: (offices) => { dispatch(dispatchOffices(offices)) }
 })
 
-export default connect(null, mapDispatchToProps)(Loader)
+export default connect(mapStateToProps, mapDispatchToProps)(Loader)
