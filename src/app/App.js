@@ -6,12 +6,14 @@ import MapViewPage from './pages/mapViewPage';
 import Header from './partials/header';
 import Loader from './pages/loader/loader';
 import { Switch, Route, Redirect, HashRouter} from 'react-router-dom';
-import { connect } from 'react-redux';
+import store from './store/store';
+import { Provider }  from 'react-redux';
 require('dotenv').config();
 
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
         <HashRouter>
             <Fragment>
                 <Header />
@@ -24,10 +26,10 @@ class App extends Component {
                 </Switch>
               </Fragment>
           </HashRouter>
+      </Provider>    
     );
   }
 }
 
-const mapStateToProps = (state) => ({ ...state });
 
-export default connect(mapStateToProps)(App);
+export default App;
